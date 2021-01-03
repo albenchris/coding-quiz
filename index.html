@@ -8,13 +8,21 @@
     <link rel="stylesheet" href="./assets/style.css"/>
 </head>
 <body>
-    <section id="quiz-wrapper">
-        <h2 id="question"></h2>
-        <ul id="answers"></ul>
-        <button id="check-answer">Check Answer</button>
-    </section>
-
-    <section id="results"></section>
+    <main class="container">
+        <section id="question-container">
+            <h2 id="question">Question</h2>
+            <ul id="answers" class="btn-grid">
+                <button class="btn">Answer 1</button>
+                <button class="btn">Answer 2</button>
+                <button class="btn">Answer 3</button>
+                <button class="btn">Answer 4</button>
+            </ul>
+        </section>
+        <div class="controls" id="controls">
+            <button id="start-btn" class="start-btn btn">Start</button>
+            <button id="next-btn" class="next-btn btn">Next</button>
+        </div>
+    </main>
 
     <script src="./assets/script.js"></script>
 </body>

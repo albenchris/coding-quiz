@@ -8,52 +8,52 @@ var quizQuestions = [
     {
         question: "Commonly used data types do NOT include:",
         answers: {
-            "strings",
-            "booleans",
-            "alerts",
-            "numbers"
+            a: "strings",
+            b: "booleans",
+            c: "alerts",
+            d: "numbers"
         },
-        correctAnswer: "alerts"
+        correctAnswer: "c"
     },
     {
         question: "The condition in an if/else statement is enclosed with ______.",
         answers: {
-            "quotes",
-            "curly brackets",
-            "parenthesis",
-            "square brackets"
+            a: "quotes",
+            b: "curly brackets",
+            c: "parenthesis",
+            d: "square brackets"
         },
-        correctAnswer: "curly brackets"
+        correctAnswer: "b"
     },
     {
         question: "Arrays in JavaScript can be used to store ______.",
         answers: {
-            "numbers and strings",
-            "other arrays",
-            "booleans",
-            "all of these"
+            a: "numbers and strings",
+            b: "other arrays",
+            c: "booleans",
+            d: "all of these"
         },
-        correctAnswer: "all of these"
+        correctAnswer: "d"
     },
     {
         question: "String values must be enclosed within ______ when being assigned to variables.",
         answers: {
-            "commas",
-            "curly brackets",
-            "quotes",
-            "parenthesis"
+            a: "commas",
+            b: "curly brackets",
+            c: "quotes",
+            d: "parenthesis"
         },
-        correctAnswer: "quotes"
+        correctAnswer: "c"
     },
     {
         question: "A very useful tool used during development and debugging for printing content to the debugger is:",
         answers: {
-            "JavaScript",
-            "terminal/bash",
-            "for loops",
-            "console.log"
+            a: "JavaScript",
+            b: "terminal/bash",
+            c: "for loops",
+            d: "console.log"
         },
-        correctAnswer: "console.log"
+        correctAnswer: "d"
     }
 ];
 
@@ -68,12 +68,18 @@ var quizQuestions = [
 
 // create a function to start the quiz with a timer
 function startQuiz() {
-
+    var startQuizPage = document.createElement("div");
+    startQuizPage.innerHTML = 
+        "<h2>Coding Quiz Challenge</h2>" +
+        "<p>Try to answer the following code-related questions within the time limit." +
+        "Keep in mind that incorrect answers will penalize your score/time by ten seconds!</p>" +
+        "<button>Start Quiz</button>";
+    startQuizPage.appendChild("#quiz-wrapper");
 };
 
 // create functions to display questions in a slideshow format
 function formatQuestions() {
-
+    
 };
 
 // create a funtion to subtract time from the clock when user selects wrong answer
