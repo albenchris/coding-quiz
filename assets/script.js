@@ -74,7 +74,7 @@ function startQuiz() {
         "<p>Try to answer the following code-related questions within the time limit." +
         "Keep in mind that incorrect answers will penalize your score/time by ten seconds!</p>" +
         "<button>Start Quiz</button>";
-    startQuizPage.appendChild("#quiz-wrapper");
+    // startQuizPage.appendChild("#quiz-wrapper");
 };
 
 // create functions to display questions in a slideshow format
