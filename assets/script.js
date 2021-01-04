@@ -1,59 +1,52 @@
 // VARIABLES
-var quizWrapper = document.querySelector("#quiz-wrapper");
-var checkAnswerButton = document.querySelector("#check-answer");
-var resultsWrapper = document.querySelector("#results");
+var startButton = document.getElementById("start-btn");
+var questionContainerElement = document.getElementById("question-container")
 
-// create variable to hold questions and answers
 var quizQuestions = [
     {
         question: "Commonly used data types do NOT include:",
-        answers: {
-            a: "strings",
-            b: "booleans",
-            c: "alerts",
-            d: "numbers"
-        },
-        correctAnswer: "c"
+        answers: [
+            { text: "strings", correct: false },
+            { text: "booleans", correct: false },
+            { text: "numbers", correct: false },
+            { text: "alerts", correct: true }
+        ]
     },
     {
         question: "The condition in an if/else statement is enclosed with ______.",
-        answers: {
-            a: "quotes",
-            b: "curly brackets",
-            c: "parenthesis",
-            d: "square brackets"
-        },
-        correctAnswer: "b"
+        answers: [
+            { text: "quotes", correct: false },
+            { text: "parenthesis", correct: false },
+            { text: "square brackets", correct: false },
+            { text: "curly brackets", correct: true }
+        ]
     },
     {
         question: "Arrays in JavaScript can be used to store ______.",
-        answers: {
-            a: "numbers and strings",
-            b: "other arrays",
-            c: "booleans",
-            d: "all of these"
-        },
-        correctAnswer: "d"
+        answers: [
+            { text: "numbers and strings", correct: false },
+            { text: "other arrays", correct: false },
+            { text: "booleans", correct: false },
+            { text: "all of these", correct: true }
+        ]
     },
     {
         question: "String values must be enclosed within ______ when being assigned to variables.",
-        answers: {
-            a: "commas",
-            b: "curly brackets",
-            c: "quotes",
-            d: "parenthesis"
-        },
-        correctAnswer: "c"
+        answers: [
+            { text: "parenthesis", correct: false },
+            { text: "commas", correct: false },
+            { text: "curly brackets", correct: false },
+            { text: "quotes", correct: true }
+        ]  
     },
     {
         question: "A very useful tool used during development and debugging for printing content to the debugger is:",
-        answers: {
-            a: "JavaScript",
-            b: "terminal/bash",
-            c: "for loops",
-            d: "console.log"
-        },
-        correctAnswer: "d"
+        answers: [
+            { text: "JavaScript", correct: false },
+            { text: "terminal/bash", correct: false },
+            { text: "for loops", correct: false },
+            { text: "console.log", correct: true }
+        ]
     }
 ];
 
@@ -68,12 +61,16 @@ var quizQuestions = [
 
 // create a function to start the quiz with a timer
 function startQuiz() {
-    var startQuizPage = document.createElement("div");
-    startQuizPage.innerHTML = 
-        "<h2>Coding Quiz Challenge</h2>" +
-        "<p>Try to answer the following code-related questions within the time limit." +
-        "Keep in mind that incorrect answers will penalize your score/time by ten seconds!</p>" +
-        "<button>Start Quiz</button>";
+    console.log("started");
+    startButton.classList.add("start-btn");
+    questionContainerElement.classList.remove("start-btn");
+
+    // var startQuizPage = document.createElement("div");
+    // startQuizPage.innerHTML = 
+    //     "<h2>Coding Quiz Challenge</h2>" +
+    //     "<p>Try to answer the following code-related questions within the time limit." +
+    //     "Keep in mind that incorrect answers will penalize your score/time by ten seconds!</p>" +
+    //     "<button>Start Quiz</button>";
     // startQuizPage.appendChild("#quiz-wrapper");
 };
 
@@ -110,6 +107,6 @@ startQuiz();
 
 // EVENT LISTENERS
 
-
+startButton.addEventListener("click", startQuiz);
 
 // EVENT LISTENERS END
