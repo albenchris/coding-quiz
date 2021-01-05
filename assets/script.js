@@ -1,11 +1,14 @@
 // VARIABLES
+var timerValue = 100;
+
 var introContainerElement = document.getElementById("intro-container");
+var questionContainerElement = document.getElementById("question-container");
+var questionElement = document.getElementById("question");
+var answersElement = document.getElementById("answers");
+var resultsContainerElement = document.getElementById("results-container");
 var startButton = document.getElementById("start-btn");
 var nextButton = document.getElementById("next-btn");
 var resultsButton = document.getElementById("results-btn");
-var questionContainerElement = document.getElementById("question-container");
-var questionElement = document.getElementById("question");
-var answersElement = document.getElementById("answers")
 
 var shuffledQuestions, currentQuestionIndex;
 
@@ -75,6 +78,10 @@ function startQuiz() {
     showNextQuestion();
 };
 
+function timerCountdown() {
+
+};
+
 // create functions to display questions in a slideshow format
 function showQuestion(question) {
     questionElement.innerText = question.question;
@@ -128,7 +135,8 @@ function wrongAnswer() {
 
 // create a funtion to end quiz when all questions answered or timer reaches 0
 function endQuiz() {
-
+    questionContainerElement.classList.add("hide");
+    resultsContainerElement.classList.remove("hide");
 };
 
 // create a funtion to save timer value as high score with user's initials
@@ -149,5 +157,6 @@ nextButton.addEventListener("click", () => {
     currentQuestionIndex++
     showNextQuestion()
 });
+resultsButton.addEventListener("click", endQuiz);
 
 // EVENT LISTENERS END

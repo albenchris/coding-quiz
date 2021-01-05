@@ -8,18 +8,21 @@
     <link rel="stylesheet" href="./assets/style.css"/>
 </head>
 <body>
+    <header>
+        <button class="nav-btn btn"><span>{</span>View high scores<span>}</span></button>
+        <div id="timer">Time: 100</div>
+    </header>
+
     <main class="container">
         <section id="intro-container">
             <h2 class="title">Coding Quiz Challenge</h2>
-            <p class="description">
+            <p>
                 Try to answer the following code-related questions within the time limit.
                 Keep in mind that incorrect answers will penalize your score/time by ten seconds!
             </p>
             <button id="start-btn" class="nav-btn btn"><span>{</span>Start<span>}</span></button>
         </section>
-    </main>
-    
-    <main class="container">
+        
         <section id="question-container" class="hide">
             <h2 id="question" class="question">Question</h2>
             <div id="answers" class="btn-grid">
@@ -31,8 +34,32 @@
             <button id="next-btn" class="nav-btn btn"><span>{</span>Next<span>}</span></button>
             <button id="results-btn" class="nav-btn btn hide"><span>{</span>Show Results<span>}</span></button>
         </section>
-    </main>
 
+        <section id="results-container" class="hide">
+            <h2>All done!</h2>
+            <p>Your final score is <span id="score"></span>.</p>
+            <input type="text" name="user's initials" placeholder="Enter initials to save your score!" />
+            <button class="nav-btn btn" id="save-high-score" type="submit"><span>{</span>Submit<span>}</span></button>
+        </section>
+
+        <section id="high-scores-container" class="hide">
+            <h2>High Scores</h2>
+            <ol>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ol>
+            <button>Try Again</button>
+            <button>Clear High Scores</button>
+        </section>
+    </main>
     <script src="./assets/script.js"></script>
 </body>
 </html>
