@@ -2,6 +2,7 @@
 var introContainerElement = document.getElementById("intro-container");
 var startButton = document.getElementById("start-btn");
 var nextButton = document.getElementById("next-btn");
+var resultsButton = document.getElementById("results-btn");
 var questionContainerElement = document.getElementById("question-container");
 var questionElement = document.getElementById("question");
 var answersElement = document.getElementById("answers")
@@ -102,12 +103,27 @@ function resetState() {
 };
 
 // create a funtion to subtract time from the clock when user selects wrong answer
-function rightAnswer() {
+function answerChoice(event) {
+    var selectedAnswer = event.target;
+    var correct = selectedAnswer.dataset.correct;
+    if (correct) {
+        correctAnswer();
+    } else {
+        wrongAnswer();
+    }
+    if (shuffledQuestions.length > currentQuestionIndex + 1) {
+        nextButton.classList.remove("hide")
+    } else {
+        resultsButton.classList.remove("hide")
+    }
+};
 
+function correctAnswer() {
+    console.log("That's correct!");
 };
 
 function wrongAnswer() {
-
+    console.log("Whoops, wrong answer!");
 };
 
 // create a funtion to end quiz when all questions answered or timer reaches 0
@@ -129,5 +145,9 @@ function highScore() {
 // EVENT LISTENERS
 
 startButton.addEventListener("click", startQuiz);
+nextButton.addEventListener("click", () => {
+    currentQuestionIndex++
+    showNextQuestion()
+});
 
 // EVENT LISTENERS END

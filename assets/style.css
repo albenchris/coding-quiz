@@ -71,6 +71,14 @@ span {
     background: var(--quaternary);
 }
 
+.correct {
+    color: var(--correctcolor);
+}
+
+.wrong {
+    color: var(--wrongcolor);
+}
+
 .hide {
     display: none;
 }
