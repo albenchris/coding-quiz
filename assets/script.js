@@ -126,6 +126,7 @@ function correctAnswer() {
 
 function wrongAnswer() {
     console.log("Whoops, wrong answer!");
+    timerValue = timerValue - 10;
 };
 
 // create a funtion to end quiz when all questions answered or timer reaches 0
@@ -142,6 +143,9 @@ function highScore() {
 
 function startTimer(){
     document.getElementById("timer").innerHTML = timerValue-=1;
+    if (timerValue <= 0) {
+        stopTimer();
+    }
 };
 
 function stopTimer(){
