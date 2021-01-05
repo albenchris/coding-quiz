@@ -9,19 +9,27 @@
 </head>
 <body>
     <main class="container">
-        <section id="question-container">
+        <section id="intro-container">
+            <h2 class="title">Coding Quiz Challenge</h2>
+            <p class="description">
+                Try to answer the following code-related questions within the time limit.
+                Keep in mind that incorrect answers will penalize your score/time by ten seconds!
+            </p>
+            <button id="start-btn" class="nav-btn btn"><span>{</span>Start<span>}</span></button>
+        </section>
+    </main>
+    
+    <main class="container">
+        <section id="question-container" class="hide">
             <h2 id="question" class="question">Question</h2>
             <div id="answers" class="btn-grid">
-                <button class="answer-btn btn"><span>{</span>Answer 1<span>}</span></button>
-                <button class="answer-btn btn"><span>{</span>Answer 2<span>}</span></button>
-                <button class="answer-btn btn"><span>{</span>Answer 3<span>}</span></button>
-                <button class="answer-btn btn"><span>{</span>Answer 4<span>}</span></button>
+                <button class="btn"><span>{</span>Answer 1<span>}</span></button>
+                <button class="btn"><span>{</span>Answer 2<span>}</span></button>
+                <button class="btn"><span>{</span>Answer 3<span>}</span></button>
+                <button class="btn"><span>{</span>Answer 4<span>}</span></button>
             </div>
+            <button id="next-btn" class="nav-btn btn"><span>{</span>Next<span>}</span></button>
         </section>
-        <div class="controls" id="controls">
-            <button id="start-btn" class="start-btn nav-btn btn">startQuiz<span>();</span></button>
-            <button id="next-btn" class="next-btn nav-btn btn">nextQuestion<span>();</span></button>
-        </div>
     </main>
 
     <script src="./assets/script.js"></script>

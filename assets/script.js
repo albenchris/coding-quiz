@@ -1,6 +1,12 @@
 // VARIABLES
+var introContainerElement = document.getElementById("intro-container");
 var startButton = document.getElementById("start-btn");
-var questionContainerElement = document.getElementById("question-container")
+var nextButton = document.getElementById("next-btn");
+var questionContainerElement = document.getElementById("question-container");
+var questionElement = document.getElementById("question");
+var answersElement = document.getElementById("answers")
+
+var shuffledQuestions, currentQuestionIndex;
 
 var quizQuestions = [
     {
@@ -61,22 +67,38 @@ var quizQuestions = [
 
 // create a function to start the quiz with a timer
 function startQuiz() {
-    console.log("started");
-    startButton.classList.add("start-btn");
-    questionContainerElement.classList.remove("start-btn");
-
-    // var startQuizPage = document.createElement("div");
-    // startQuizPage.innerHTML = 
-    //     "<h2>Coding Quiz Challenge</h2>" +
-    //     "<p>Try to answer the following code-related questions within the time limit." +
-    //     "Keep in mind that incorrect answers will penalize your score/time by ten seconds!</p>" +
-    //     "<button>Start Quiz</button>";
-    // startQuizPage.appendChild("#quiz-wrapper");
+    introContainerElement.classList.add("hide");
+    shuffledQuestions = quizQuestions.sort(() => Math.random() - .5);
+    currentQuestionIndex = 0
+    questionContainerElement.classList.remove("hide");
+    showNextQuestion();
 };
 
 // create functions to display questions in a slideshow format
-function formatQuestions() {
-    
+function showQuestion(question) {
+    questionElement.innerText = question.question;
+    question.answers.forEach(answer => {
+        var button = document.createElement("button")
+        button.innerText = answer.text
+        button.classList.add("btn")
+        if (answer.correct) {
+            button.dataset.correct = answer.correct
+        }
+        button.addEventListener("click", answerChoice)
+        answersElement.appendChild(button)
+    });
+};
+
+function showNextQuestion() {
+    resetState();
+    showQuestion(shuffledQuestions[currentQuestionIndex]);
+};
+
+function resetState() {
+    nextButton.classList.add("hide");
+    while (answersElement.firstChild) {
+        answersElement.removeChild(answersElement.firstChild)
+    }
 };
 
 // create a funtion to subtract time from the clock when user selects wrong answer
@@ -100,7 +122,6 @@ function highScore() {
 
 // FUNCTION DEFINITIONS END
 
-startQuiz();
 
 
 

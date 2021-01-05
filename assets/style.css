@@ -10,6 +10,8 @@
     --secondary: rgb(240, 182, 74);
     --tertiary: rgb(94, 180, 219);
     --quaternary: rgb(36, 36, 36);
+    --correctcolor: rgb(57, 126, 0);
+    --wrongcolor: rgb(168, 10, 10);
 }
 
 body {
@@ -28,9 +30,14 @@ body {
     max-width: 80%;
 }
 
+.title,
 .question {
     color: var(--secondary);
     font-size: 25px;
+}
+
+.description {
+    color: var(--tertiary);
 }
 
 .btn-grid {
@@ -56,10 +63,14 @@ body {
     margin: 20px 30px;
 }
 
-.btn span {
+span {
     color: white;
 }
 
 .btn:hover {
     background: var(--quaternary);
+}
+
+.hide {
+    display: none;
 }
