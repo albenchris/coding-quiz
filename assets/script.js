@@ -8,7 +8,6 @@ var questionElement = document.getElementById("question");
 var answersElement = document.getElementById("answers");
 var resultsContainerElement = document.getElementById("results-container");
 var startButton = document.getElementById("start-btn");
-var resultsButton = document.getElementById("results-btn");
 
 var shuffledQuestions, currentQuestionIndex;
 
@@ -161,5 +160,4 @@ function stopTimer() {
 
 // EVENT LISTENERS
 startButton.addEventListener("click", startQuiz);
-resultsButton.addEventListener("click", endQuiz);
 // EVENT LISTENERS END
