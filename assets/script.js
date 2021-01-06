@@ -8,7 +8,6 @@ var questionElement = document.getElementById("question");
 var answersElement = document.getElementById("answers");
 var resultsContainerElement = document.getElementById("results-container");
 var startButton = document.getElementById("start-btn");
-var nextButton = document.getElementById("next-btn");
 var resultsButton = document.getElementById("results-btn");
 
 var shuffledQuestions, currentQuestionIndex;
@@ -60,36 +59,36 @@ var quizQuestions = [
         ]
     }
 ];
-
 // VARIABLES END
-
-
-
 
 
 // FUNCTION DEFINITIONS
 function startQuiz() {
-    // timerCountdown();
     introContainerElement.classList.add("hide");
     shuffledQuestions = quizQuestions.sort(() => Math.random() - .5);
     currentQuestionIndex = 0
     questionContainerElement.classList.remove("hide");
+    startTimer();
     showNextQuestion();
 };
 
 // create functions to display questions in a slideshow format
 function showQuestion(question) {
-    questionElement.innerText = question.question;
-    question.answers.forEach(answer => {
-        var button = document.createElement("button")
-        button.innerText = answer.text
-        button.classList.add("btn")
-        if (answer.correct) {
-            button.dataset.correct = answer.correct
-        }
-        button.addEventListener("click", answerChoice)
-        answersElement.appendChild(button)
-    });
+    if (shuffledQuestions.length > currentQuestionIndex) {
+        questionElement.innerText = question.question;
+        question.answers.forEach(answer => {
+            var button = document.createElement("button")
+            button.innerText = answer.text
+            button.classList.add("btn")
+            if (answer.correct) {
+                button.dataset.correct = answer.correct
+            }
+            button.addEventListener("click", answerChoice)
+            answersElement.appendChild(button)
+        });
+    } else {
+        endQuiz();
+    }
 };
 
 function showNextQuestion() {
@@ -98,7 +97,6 @@ function showNextQuestion() {
 };
 
 function resetState() {
-    nextButton.classList.add("hide");
     while (answersElement.firstChild) {
         answersElement.removeChild(answersElement.firstChild)
     }
@@ -112,21 +110,20 @@ function answerChoice(event) {
         correctAnswer();
     } else {
         wrongAnswer();
-    }
-    if (shuffledQuestions.length > currentQuestionIndex + 1) {
-        nextButton.classList.remove("hide")
-    } else {
-        resultsButton.classList.remove("hide")
-    }
+    } 
 };
 
 function correctAnswer() {
     console.log("That's correct!");
+    currentQuestionIndex++;
+    showNextQuestion();
 };
 
 function wrongAnswer() {
     console.log("Whoops, wrong answer!");
     timerValue = timerValue - 10;
+    currentQuestionIndex++;
+    showNextQuestion();
 };
 
 // create a funtion to end quiz when all questions answered or timer reaches 0
@@ -141,29 +138,28 @@ function highScore() {
 
 };
 
-function startTimer(){
+
+
+
+
+// fix timer during office hours
+function startTimer() {
+    console.log("The timer has started"); 
+    
     document.getElementById("timer").innerHTML = timerValue-=1;
     if (timerValue <= 0) {
-        stopTimer();
-    }
+        endQuiz();
+    }    
 };
 
-function stopTimer(){
+function stopTimer() {
+    console.log("The timer has stopped");
     window.clearInterval(timerInterval);
 };
-
 // FUNCTION DEFINITIONS END
 
 
-
-
-
 // EVENT LISTENERS
-
 startButton.addEventListener("click", startQuiz);
-nextButton.addEventListener("click", () => {
-    currentQuestionIndex++
-    showNextQuestion()
-});
 resultsButton.addEventListener("click", endQuiz);
 // EVENT LISTENERS END
