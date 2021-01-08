@@ -9,7 +9,7 @@
 </head>
 <body>
     <header>
-        <button class="nav-btn btn"><span>{</span>View high scores<span>}</span></button>
+        <button id="view-high-scores" class="nav-btn btn"><span>{</span>View high scores<span>}</span></button>
         <div id="timer"></div>
     </header>
 
@@ -36,26 +36,20 @@
         <section id="results-container" class="hide">
             <h2>All done!</h2>
             <p>Your final score is <span id="score"></span>.</p>
-            <input type="text" name="user's initials" placeholder="Enter initials to save your score!" />
-            <button class="nav-btn btn" id="save-high-score" type="submit"><span>{</span>Submit<span>}</span></button>
+            <input type="text" name="user-initials" id="user-initials" placeholder="Enter initials to save your score!" />
+            <button id="save-high-score" class="nav-btn btn" type="submit"><span>{</span>Submit<span>}</span></button>
         </section>
 
         <section id="high-scores-container" class="hide">
             <h2>High Scores</h2>
             <ol>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
+                <li id="high-scores"></li>
+                <li id="high-scores"></li>
+                <li id="high-scores"></li>
+                <li id="high-scores"></li>
+                <li id="high-scores"></li>
             </ol>
-            <button>Try Again</button>
-            <button>Clear High Scores</button>
+            <button id="clear-scores-btn" class="nav-btn btn"><span>{</span>Clear High Scores<span>}</span></button>
         </section>
     </main>
     <script src="./assets/script.js"></script>

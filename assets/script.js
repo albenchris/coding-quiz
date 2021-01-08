@@ -1,13 +1,20 @@
 // VARIABLES
 var timerValue = 60;
-var timerInterval = window.setInterval("startTimer()", 1000)
+var timerEl = document.getElementById("timer");
 
 var introContainerElement = document.getElementById("intro-container");
+var startButton = document.getElementById("start-btn");
+
+var resultsContainerElement = document.getElementById("results-container");
+var saveHighScoreButton = document.getElementById("save-high-score");
+
+var highScoresContainerElement = document.getElementById("high-scores-container");
+var viewHighScoresButton = document.getElementById("view-high-scores");
+var clearScoresButton = document.getElementById("clear-scores-btn");
+
 var questionContainerElement = document.getElementById("question-container");
 var questionElement = document.getElementById("question");
 var answersElement = document.getElementById("answers");
-var resultsContainerElement = document.getElementById("results-container");
-var startButton = document.getElementById("start-btn");
 
 var shuffledQuestions, currentQuestionIndex;
 
@@ -64,11 +71,29 @@ var quizQuestions = [
 // FUNCTION DEFINITIONS
 function startQuiz() {
     introContainerElement.classList.add("hide");
+    highScoresContainerElement.classList.add("hide");
     shuffledQuestions = quizQuestions.sort(() => Math.random() - .5);
     currentQuestionIndex = 0
     questionContainerElement.classList.remove("hide");
     startTimer();
     showNextQuestion();
+};
+
+function startTimer() {
+    var timerInterval = setInterval(function() {
+        if (timerValue >= 1 && shuffledQuestions.length > currentQuestionIndex) {
+            timerEl.textContent = "Time Left: " + timerValue + "s";
+            timerValue--;
+        } else if (timerValue === 0) {
+            timerEl.textContent = "Time Left: " + timerValue + "s";
+            clearInterval(timerInterval);
+            showHighScores();
+        } else {
+            timerEl.textContent = "Time Left: " + timerValue + "s";
+            clearInterval(timerInterval);
+            endQuiz();
+        }
+    }, 1000); 
 };
 
 // create functions to display questions in a slideshow format
@@ -127,37 +152,50 @@ function wrongAnswer() {
 
 // create a funtion to end quiz when all questions answered or timer reaches 0
 function endQuiz() {
-    stopTimer();
     questionContainerElement.classList.add("hide");
     resultsContainerElement.classList.remove("hide");
 };
 
 // create a funtion to save timer value as high score with user's initials
-function highScore() {
-
-};
 
 
-
-
-
-// fix timer during office hours
-function startTimer() {
-    console.log("The timer has started"); 
+function saveHighScore(event) {
+    event.preventDefault();
+    var initials = document.getElementById("user-initials").value;
+    var score = timerValue;
     
-    document.getElementById("timer").innerHTML = timerValue-=1;
-    if (timerValue <= 0) {
-        endQuiz();
-    }    
+    if (initials === "") {
+        alert("You must enter initials!")
+    } else if (score === 0) {
+        alert("Sorry, try again soon!")
+    } else {
+        localStorage.setItem("initials", JSON.stringify(initials));
+        localStorage.setItem("score", JSON.stringify(score));
+    }
 };
 
-function stopTimer() {
-    console.log("The timer has stopped");
-    window.clearInterval(timerInterval);
+function showHighScores() {
+    timerEl.classList.add("hide");
+    introContainerElement.classList.add("hide");
+    questionContainerElement.classList.add("hide");
+    resultsContainerElement.classList.add("hide");
+    highScoresContainerElement.classList.remove("hide");
+
+    var initials = localStorage.getItem("initials");
+    var score = localStorage.getItem("score");
+
+    
+};
+
+function clearScores() {
+
 };
 // FUNCTION DEFINITIONS END
 
 
 // EVENT LISTENERS
 startButton.addEventListener("click", startQuiz);
+viewHighScoresButton.addEventListener("click", showHighScores);
+clearScoresButton.addEventListener("click", clearScores);
+resultsContainerElement.addEventListener("click", saveHighScore);
 // EVENT LISTENERS END

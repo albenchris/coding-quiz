@@ -23,6 +23,7 @@ body {
     align-items: center;
     width: 100vw;
     height: 100vh;
+    color: var(--tertiary);
 }
 
 header {
@@ -76,12 +77,12 @@ p {
     margin: 20px 30px;
 }
 
-span {
-    color: white;
-}
-
 .btn:hover {
     background: var(--quaternary);
+}
+
+span {
+    color: white;
 }
 
 .correct {
