@@ -154,6 +154,8 @@ function wrongAnswer() {
 function endQuiz() {
     questionContainerElement.classList.add("hide");
     resultsContainerElement.classList.remove("hide");
+    var userScore = document.getElementById("score");
+    userScore.textContent = timerValue;
 };
 
 // create a funtion to save timer value as high score with user's initials
