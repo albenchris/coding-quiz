@@ -21,18 +21,18 @@ var quizQuestions = [
         question: "Commonly used data types do NOT include:",
         answers: [
             { text: "strings", correct: false },
+            { text: "alerts", correct: true },
             { text: "booleans", correct: false },
-            { text: "numbers", correct: false },
-            { text: "alerts", correct: true }
+            { text: "numbers", correct: false }
         ]
     },
     {
         question: "The condition in an if/else statement is enclosed with ______.",
         answers: [
-            { text: "quotes", correct: false },
             { text: "parenthesis", correct: false },
             { text: "square brackets", correct: false },
-            { text: "curly brackets", correct: true }
+            { text: "curly brackets", correct: true },
+            { text: "quotes", correct: false }
         ]
     },
     {
@@ -47,10 +47,10 @@ var quizQuestions = [
     {
         question: "String values must be enclosed within ______ when being assigned to variables.",
         answers: [
+            { text: "quotes", correct: true },
             { text: "parenthesis", correct: false },
             { text: "commas", correct: false },
-            { text: "curly brackets", correct: false },
-            { text: "quotes", correct: true }
+            { text: "curly brackets", correct: false }
         ]  
     },
     {
@@ -58,8 +58,8 @@ var quizQuestions = [
         answers: [
             { text: "JavaScript", correct: false },
             { text: "terminal/bash", correct: false },
+            { text: "console.log", correct: true },
             { text: "for loops", correct: false },
-            { text: "console.log", correct: true }
         ]
     }
 ];

@@ -10,8 +10,8 @@
     --secondary: rgb(240, 182, 74);
     --tertiary: rgb(94, 180, 219);
     --quaternary: rgb(36, 36, 36);
-    --correctcolor: rgb(57, 126, 0);
-    --wrongcolor: rgb(168, 10, 10);
+    --correctcolor: rgb(84, 163, 20);
+    --wrongcolor: rgb(218, 40, 40);
 }
 
 body {
