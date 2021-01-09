@@ -12,6 +12,8 @@ var startButton = document.getElementById("start-btn");
 var questionContainerElement = document.getElementById("question-container");
 var questionElement = document.getElementById("question");
 var answersElement = document.getElementById("answers");
+var correctEl = document.getElementById("correct-answer");
+var wrongEl = document.getElementById("wrong-answer");
 var shuffledQuestions, currentQuestionIndex;
 
 var quizQuestions = [
@@ -140,13 +142,15 @@ function answerChoice(event) {
 };
 
 function correctAnswer() {
-    
+    wrongEl.classList.add("hide");
+    correctEl.classList.remove("hide");
     currentQuestionIndex++;
     showNextQuestion();
 };
 
 function wrongAnswer() {
-    
+    correctEl.classList.add("hide");
+    wrongEl.classList.remove("hide");
     timerValue = timerValue - 10;
     currentQuestionIndex++;
     showNextQuestion();
