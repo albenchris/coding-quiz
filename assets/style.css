@@ -85,6 +85,16 @@ span {
     color: white;
 }
 
+input {
+    background: var(--quaternary);
+    color: var(--tertiary);
+    border-radius: 5px;
+}
+
+#score {
+    color: var(--secondary);
+}
+
 .correct {
     color: var(--correctcolor);
 }

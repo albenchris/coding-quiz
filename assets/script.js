@@ -1,21 +1,17 @@
 // VARIABLES
-var timerValue = 60;
 var timerEl = document.getElementById("timer");
+var timerValue = 60;
+var userScore = [];
+var scoreIdCounter = 0;
+
+var viewHighScoresButton = document.getElementById("view-high-score");
 
 var introContainerElement = document.getElementById("intro-container");
 var startButton = document.getElementById("start-btn");
 
-var resultsContainerElement = document.getElementById("results-container");
-var saveHighScoreButton = document.getElementById("save-high-score");
-
-var highScoresContainerElement = document.getElementById("high-scores-container");
-var viewHighScoresButton = document.getElementById("view-high-scores");
-var clearScoresButton = document.getElementById("clear-scores-btn");
-
 var questionContainerElement = document.getElementById("question-container");
 var questionElement = document.getElementById("question");
 var answersElement = document.getElementById("answers");
-
 var shuffledQuestions, currentQuestionIndex;
 
 var quizQuestions = [
@@ -65,13 +61,18 @@ var quizQuestions = [
         ]
     }
 ];
-// VARIABLES END
 
+var resultsContainerElement = document.getElementById("results-container");
+var saveHighScoreButton = document.getElementById("save-high-score");
+
+var highScoreContainerElement = document.getElementById("high-score-container");
+var highScoresList = document.getElementById("high-score")
+// VARIABLES END
 
 // FUNCTION DEFINITIONS
 function startQuiz() {
     introContainerElement.classList.add("hide");
-    highScoresContainerElement.classList.add("hide");
+    highScoreContainerElement.classList.add("hide");
     shuffledQuestions = quizQuestions.sort(() => Math.random() - .5);
     currentQuestionIndex = 0
     questionContainerElement.classList.remove("hide");
@@ -84,10 +85,11 @@ function startTimer() {
         if (timerValue >= 1 && shuffledQuestions.length > currentQuestionIndex) {
             timerEl.textContent = "Time Left: " + timerValue + "s";
             timerValue--;
-        } else if (timerValue === 0) {
+        } else if (timerValue <= 0) {
+            timerValue = 0;
             timerEl.textContent = "Time Left: " + timerValue + "s";
             clearInterval(timerInterval);
-            showHighScores();
+            showHighScore();
         } else {
             timerEl.textContent = "Time Left: " + timerValue + "s";
             clearInterval(timerInterval);
@@ -138,19 +140,18 @@ function answerChoice(event) {
 };
 
 function correctAnswer() {
-    console.log("That's correct!");
+    
     currentQuestionIndex++;
     showNextQuestion();
 };
 
 function wrongAnswer() {
-    console.log("Whoops, wrong answer!");
+    
     timerValue = timerValue - 10;
     currentQuestionIndex++;
     showNextQuestion();
 };
 
-// create a funtion to end quiz when all questions answered or timer reaches 0
 function endQuiz() {
     questionContainerElement.classList.add("hide");
     resultsContainerElement.classList.remove("hide");
@@ -158,46 +159,53 @@ function endQuiz() {
     userScore.textContent = timerValue;
 };
 
-// create a funtion to save timer value as high score with user's initials
-
-
-function saveHighScore(event) {
+function saveScore(event) {
     event.preventDefault();
-    var initials = document.getElementById("user-initials").value;
+    var user = document.getElementById("user-initials").value;
     var score = timerValue;
-    
-    if (initials === "") {
-        alert("You must enter initials!")
-    } else if (score === 0) {
-        alert("Sorry, try again soon!")
+
+    if (!user || score === 0) {
+        alert("You must enter initials!");
+        return false;
     } else {
-        localStorage.setItem("initials", JSON.stringify(initials));
+        var userScoreObj = {
+            user: user,
+            score: score
+        };
+        userScore.push(userScoreObj);
+        localStorage.setItem("user", JSON.stringify(user))
         localStorage.setItem("score", JSON.stringify(score));
+        showHighScore;
     }
+
+    userScoreObj.id = scoreIdCounter;    
 };
 
-function showHighScores() {
+function showHighScore() {
     timerEl.classList.add("hide");
     introContainerElement.classList.add("hide");
     questionContainerElement.classList.add("hide");
     resultsContainerElement.classList.add("hide");
-    highScoresContainerElement.classList.remove("hide");
+    highScoreContainerElement.classList.remove("hide");
 
-    var initials = localStorage.getItem("initials");
-    var score = localStorage.getItem("score");
+    var savedUsers = localStorage.getItem("user");
+    var savedScores = localStorage.getItem("score");
 
-    
-};
+    if (!savedUsers || !savedScores) {
+        return false;
+    }
 
-function clearScores() {
+    savedUsers = JSON.parse(savedUsers);
 
+    var savedScoreItem = document.createElement("div");
+    savedScoreItem.setAttribute("data-score-id", scoreIdCounter)
+    savedScoreItem.innerHTML = "<span>[ </span>" + savedUsers + " - " + savedScores + "<span> ]</span>";
+    highScoresList.appendChild(savedScoreItem);
 };
 // FUNCTION DEFINITIONS END
 
-
 // EVENT LISTENERS
 startButton.addEventListener("click", startQuiz);
-viewHighScoresButton.addEventListener("click", showHighScores);
-clearScoresButton.addEventListener("click", clearScores);
-resultsContainerElement.addEventListener("click", saveHighScore);
+viewHighScoresButton.addEventListener("click", showHighScore);
+resultsContainerElement.addEventListener("submit", saveScore);
 // EVENT LISTENERS END

@@ -9,7 +9,7 @@
 </head>
 <body>
     <header>
-        <button id="view-high-scores" class="nav-btn btn"><span>{</span>View high scores<span>}</span></button>
+        <button id="view-high-score" class="nav-btn btn"><span>{</span>View High Score<span>}</span></button>
         <div id="timer"></div>
     </header>
 
@@ -24,23 +24,22 @@
         </section>
         
         <section id="question-container" class="hide">
-            <h2 id="question" class="question">Question</h2>
-            <div id="answers" class="btn-grid">
-            </div>
+            <h2 id="question" class="question"></h2>
+            <div id="answers" class="btn-grid"></div>
+            <div class="correct hide">// Correct!</div>
+            <div class="wrong hide">// Sorry, wrong answer.</div>
         </section>
 
-        <section id="results-container" class="hide">
+        <form id="results-container" class="hide">
             <h2>All done!</h2>
             <p>Your final score is <span id="score"></span>.</p>
-            <input type="text" name="user-initials" id="user-initials" placeholder="Enter initials to save your score!" />
+            <input type="text" name="user-initials" id="user-initials" placeholder="Enter initials!" />
             <button id="save-high-score" class="nav-btn btn" type="submit"><span>{</span>Submit<span>}</span></button>
-        </section>
+        </form>
 
-        <section id="high-scores-container" class="hide">
-            <h2>High Scores</h2>
-            <ol id="high-scores">   
-            </ol>
-            <button id="clear-scores-btn" class="nav-btn btn"><span>{</span>Clear High Scores<span>}</span></button>
+        <section id="high-score-container" class="hide">
+            <h2>High Score</h2>
+            <div id="high-score"></div>
         </section>
     </main>
     <script src="./assets/script.js"></script>
