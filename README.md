@@ -5,7 +5,11 @@ A quick quiz to test user's coding knowledge in order to prepare for interviews.
 
 ### Screenshot
 
-![Image of repository](./assets/images/Coding-Quiz-Screencapture.png)
+![Image of repository](./assets/images/Coding-Quiz-Intro.png)
+
+![Image of repository](./assets/images/Coding-Quiz-Question.png)
+
+![Image of repository](./assets/images/Coding-Quiz-High-Score-List.png)
 
 ### Link
 [Coding Quiz](https://albenchris.github.io/coding-quiz/)
