@@ -9,7 +9,7 @@
 </head>
 <body>
     <header>
-        <button id="view-high-score" class="nav-btn btn"><span>{</span>View High Score<span>}</span></button>
+        <button id="view-high-scores" class="nav-btn btn"><span>{</span>View High Scores<span>}</span></button>
         <div id="timer"></div>
     </header>
 
@@ -26,8 +26,6 @@
         <section id="question-container" class="hide">
             <h2 id="question" class="question"></h2>
             <div id="answers" class="btn-grid"></div>
-            <div id="correct-answer" class="correct hide">// Correct!</div>
-            <div id="wrong-answer" class="wrong hide">// Sorry, wrong answer.</div>
         </section>
 
         <form id="results-container" class="hide">
@@ -37,9 +35,15 @@
             <button id="save-high-score" class="nav-btn btn" type="submit"><span>{</span>Submit<span>}</span></button>
         </form>
 
-        <section id="high-score-container" class="hide">
-            <h2>High Score</h2>
-            <div id="high-score"></div>
+        <section id="high-scores-container" class="hide">
+            <h2>Top 5 Scores<span>:</span></h2>
+                <ul id="high-scores-list"></ul>
+            <button id="try-again" class="nav-btn btn"><span>{</span>Try Again<span>}</span></button>
+        </section>
+
+        <section>
+            <div id="correct-answer" class="correct hide">// Correct!</div>
+            <div id="wrong-answer" class="wrong hide">// Sorry, wrong answer.</div>
         </section>
     </main>
     <script src="./assets/script.js"></script>
